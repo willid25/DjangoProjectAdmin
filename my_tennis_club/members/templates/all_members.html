@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Member list</h1>
+    {% if members %}
+        <ul>
+            {% for x in members %} 
+                <!-- {% csrf_token %} unique secure random token used to protect csrf attack -->
+                <li>{{ x.firstname }} {{ x.lastname }} {{ x.phone }}
+                    <form action="{% url 'all_members'%}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="member_id" value="{{ x.id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No member found.</p>
+    {% endif %}
+</body>
+</html>
+<!-- add_members assignment, add firstname and lastname and phone number, submit tomorrow -->
