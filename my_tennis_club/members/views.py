@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect  
-from django.http import HttpResponse  
-from django.template import loader  
+from django.http import HttpResponse   # type: ignore
+from django.template import loader   # type: ignore
 from .models import Member
 from .forms import MemberForm
 from .forms import ContactForm
